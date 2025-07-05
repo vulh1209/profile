@@ -1,0 +1,54 @@
+# Headers for Netlify deployment
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# JavaScript and TypeScript files
+/*.js
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: public, max-age=31536000
+
+/*.mjs
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: public, max-age=31536000
+
+/*.ts
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: public, max-age=31536000
+
+/*.tsx
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: public, max-age=31536000
+
+# CSS files
+/*.css
+  Content-Type: text/css; charset=utf-8
+  Cache-Control: public, max-age=31536000
+
+# SVG files
+/*.svg
+  Content-Type: image/svg+xml; charset=utf-8
+  Cache-Control: public, max-age=31536000
+
+# Images
+/*.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000
+
+/*.jpg
+  Content-Type: image/jpeg
+  Cache-Control: public, max-age=31536000
+
+/*.jpeg
+  Content-Type: image/jpeg
+  Cache-Control: public, max-age=31536000
+
+/*.gif
+  Content-Type: image/gif
+  Cache-Control: public, max-age=31536000
+
+/*.webp
+  Content-Type: image/webp
+  Cache-Control: public, max-age=31536000 
