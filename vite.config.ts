@@ -5,6 +5,9 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
 
+  // GitHub Pages configuration
+  base: '/profile/',
+
   // Build configuration
   build: {
     outDir: "dist",
@@ -17,6 +20,10 @@ export default defineConfig({
           vendor: ["react", "react-dom"],
           motion: ["framer-motion"],
         },
+        // Ensure proper file extensions for GitHub Pages
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
       },
     },
   },
