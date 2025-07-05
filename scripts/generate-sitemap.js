@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Configuration
-const SITE_URL = 'https://vulh1209.github.io/profile';
+const SITE_URL = 'https://vule.dev';
 const OUTPUT_PATH = path.join(__dirname, '../public/sitemap.xml');
 
 // Get current date in YYYY-MM-DD format

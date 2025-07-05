@@ -5,8 +5,8 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
 
-  // GitHub Pages configuration
-  base: '/profile/',
+  // Custom domain configuration (vule.dev)
+  base: "/",
 
   // Build configuration
   build: {
@@ -21,9 +21,9 @@ export default defineConfig({
           motion: ["framer-motion"],
         },
         // Ensure proper file extensions for GitHub Pages
-        entryFileNames: 'assets/[name]-[hash].js',
-        chunkFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash].[ext]'
+        entryFileNames: "assets/[name]-[hash].js",
+        chunkFileNames: "assets/[name]-[hash].js",
+        assetFileNames: "assets/[name]-[hash].[ext]",
       },
     },
   },

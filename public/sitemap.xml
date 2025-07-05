@@ -6,7 +6,7 @@
 
   <!-- Homepage - Main portfolio landing page -->
   <url>
-    <loc>https://vulh1209.github.io/profile/</loc>
+    <loc>https://vule.dev/</loc>
     <lastmod>2025-07-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
 
   <!-- About Section - Professional background and experience -->
   <url>
-    <loc>https://vulh1209.github.io/profile/#about</loc>
+    <loc>https://vule.dev/#about</loc>
     <lastmod>2025-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -22,7 +22,7 @@
 
   <!-- Skills Section - Technical expertise and capabilities -->
   <url>
-    <loc>https://vulh1209.github.io/profile/#skills</loc>
+    <loc>https://vule.dev/#skills</loc>
     <lastmod>2025-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -30,7 +30,7 @@
 
   <!-- Projects Section - Portfolio of work and achievements -->
   <url>
-    <loc>https://vulh1209.github.io/profile/#projects</loc>
+    <loc>https://vule.dev/#projects</loc>
     <lastmod>2025-07-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -38,7 +38,7 @@
 
   <!-- Contact Section - Get in touch information -->
   <url>
-    <loc>https://vulh1209.github.io/profile/#contact</loc>
+    <loc>https://vule.dev/#contact</loc>
     <lastmod>2025-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
