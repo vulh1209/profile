@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && npm run fix-mime",
-    "build:gh": "tsc -b && vite build && npm run fix-mime",
+    "build": "npm run generate-seo && tsc -b && vite build && npm run fix-mime",
+    "build:gh": "npm run generate-seo && tsc -b && vite build && npm run fix-mime",
     "fix-mime": "node scripts/fix-mime-types.js",
+    "generate-seo": "node scripts/generate-sitemap.js",
+    "seo": "npm run generate-seo",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -30,6 +32,7 @@
     "globals": "^16.2.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
+    "terser": "^5.43.1",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.34.1",
     "vite": "^7.0.0"
