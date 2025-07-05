@@ -6,19 +6,19 @@ const Hero = () => {
     {
       name: 'GitHub',
       icon: Github,
-      href: 'https://github.com/yourusername',
+      href: 'https://github.com/vulh1209',
       color: 'hover:text-gray-300'
     },
     {
       name: 'LinkedIn',
       icon: Linkedin,
-      href: 'https://linkedin.com/in/yourusername',
+      href: 'https://linkedin.com/in/vule',
       color: 'hover:text-accent-400'
     },
     {
       name: 'Email',
       icon: Mail,
-      href: 'mailto:your.email@example.com',
+      href: 'mailto:lehoangvu1209@gmail.com',
       color: 'hover:text-primary-400'
     }
   ];
@@ -63,8 +63,8 @@ const Hero = () => {
             className="mb-8"
           >
             <div className="w-40 h-40 md:w-48 md:h-48 mx-auto rounded-full bg-gradient-to-br from-gray-700 via-gray-800 to-black p-1 shadow-2xl">
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center border border-gray-700/50">
-                {/* Replace with your actual image */}
+              <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center border border-gray-700/50 overflow-hidden">
+                {/* Profile image */}
                 <motion.span 
                   className="text-5xl md:text-6xl"
                   animate={{ rotate: [0, 10, -10, 0] }}
@@ -93,7 +93,7 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <span className="text-accent-400">Full Stack</span> Developer
+              <span className="text-accent-400">Full Stack</span> & <span className="text-accent-400">Smart Contract</span> Developer
             </motion.p>
           </motion.div>
 
@@ -102,20 +102,40 @@ const Hero = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed"
+            className="text-lg md:text-xl text-gray-400 max-w-4xl mx-auto mb-10 leading-relaxed"
           >
-            Passionate developer specializing in modern web technologies. 
-            I create <span className="text-white font-semibold">beautiful</span>, 
-            <span className="text-white font-semibold"> functional</span>, and 
-            <span className="text-white font-semibold"> scalable</span> applications 
-            that solve real-world problems.
+            Experienced <span className="text-white font-semibold">Full Stack Developer</span> and 
+            <span className="text-white font-semibold"> Smart Contract Engineer</span> specializing in 
+            <span className="text-accent-400 font-semibold"> EVM blockchain development</span>. 
+            I create scalable web applications and secure smart contracts with expertise in modern technologies 
+            and <span className="text-white font-semibold">microservices architecture</span>.
           </motion.p>
+
+          {/* Tech Stack Highlights */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="flex flex-wrap justify-center gap-3 mb-10 max-w-2xl mx-auto"
+          >
+            {['TypeScript', 'Solidity', 'NestJS', 'NextJS', 'AWS', 'Kubernetes'].map((tech, index) => (
+              <motion.span
+                key={tech}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                className="px-4 py-2 bg-gray-800/60 backdrop-blur-sm border border-gray-600/50 text-gray-300 text-sm rounded-full hover:border-accent-500/50 hover:text-accent-400 transition-all duration-300"
+              >
+                {tech}
+              </motion.span>
+            ))}
+          </motion.div>
 
           {/* Social Links */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
             className="flex justify-center space-x-6 mb-10"
           >
             {socialLinks.map((link, index) => (
@@ -126,7 +146,7 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                transition={{ duration: 0.5, delay: 1.6 + index * 0.1 }}
                 whileHover={{ scale: 1.2, y: -5 }}
                 whileTap={{ scale: 0.9 }}
                 className={`p-4 rounded-full bg-gray-800/80 backdrop-blur-sm border border-gray-700/50 text-gray-400 transition-all duration-300 ${link.color} hover:border-gray-600 hover:bg-gray-700/80 shadow-lg hover:shadow-xl`}
@@ -141,7 +161,7 @@ const Hero = () => {
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.4 }}
+            transition={{ duration: 0.8, delay: 1.8 }}
             className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
           >
             <motion.a
@@ -168,7 +188,7 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 2 }}
+            transition={{ duration: 1, delay: 2.2 }}
             className="flex flex-col items-center"
           >
             <p className="text-gray-500 text-sm mb-4">Scroll to explore</p>

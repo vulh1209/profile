@@ -1,54 +1,88 @@
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Code } from 'lucide-react';
+import { ExternalLink, Github, Code, Database, Shield, Cloud } from 'lucide-react';
+import React from 'react';
 
 const Projects = () => {
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce solution built with React, Node.js, and PostgreSQL. Features include user authentication, payment processing, and admin dashboard.',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-      github: 'https://github.com/yourusername/ecommerce-platform',
-      live: 'https://ecommerce-demo.vercel.app',
+      title: 'DeFi Protocol Platform',
+      description: 'A comprehensive DeFi platform built with smart contracts on EVM blockchain. Features include yield farming, liquidity pools, and governance tokens. Implemented using Solidity and Hardhat framework.',
+      image: '/api/placeholder/600/400',
+      category: 'Blockchain',
+      tags: ['Solidity', 'Hardhat', 'NextJS', 'TypeScript', 'EVM'],
+      demoUrl: '#',
+      githubUrl: '#',
+      icon: Shield,
+      gradient: 'from-purple-600/20 to-blue-600/20'
+    },
+    {
+      title: 'Enterprise Microservices Platform',
+      description: 'Scalable microservices architecture using NestJS with Kafka message broker. Built for high-throughput enterprise applications with real-time data processing and WebSocket communication.',
+      image: '/api/placeholder/600/400',
+      category: 'Backend',
+      tags: ['NestJS', 'Kafka', 'Microservices', 'Docker', 'Kubernetes'],
+      demoUrl: '#',
+      githubUrl: '#',
+      icon: Database,
+      gradient: 'from-green-600/20 to-emerald-600/20'
+    },
+    {
+      title: 'Modern Web Application',
+      description: 'Full-stack web application with NextJS frontend and NestJS backend. Features real-time updates via WebSockets, AWS cloud deployment, and CI/CD pipeline with GitHub Actions.',
+      image: '/api/placeholder/600/400',
       category: 'Full Stack',
-      gradient: 'from-gray-800 to-gray-900'
+      tags: ['NextJS', 'NestJS', 'TypeScript', 'AWS', 'WebSockets'],
+      demoUrl: '#',
+      githubUrl: '#',
+      icon: Code,
+      gradient: 'from-blue-600/20 to-cyan-600/20'
     },
     {
-      title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop',
-      technologies: ['Vue.js', 'Firebase', 'Vuetify', 'Socket.io'],
-      github: 'https://github.com/yourusername/task-manager',
-      live: 'https://task-manager-demo.vercel.app',
-      category: 'Frontend',
-      gradient: 'from-gray-700 to-gray-800'
+      title: 'Node Operator Stack',
+      description: 'Private blockchain infrastructure with Node OP Stack implementation. Includes custom consensus mechanisms, private sharing protocols, and enterprise-grade security features.',
+      image: '/api/placeholder/600/400',
+      category: 'Infrastructure',
+      tags: ['Go', 'Node OP Stack', 'Blockchain', 'Kubernetes', 'Private Network'],
+      demoUrl: '#',
+      githubUrl: '#',
+      icon: Cloud,
+      gradient: 'from-orange-600/20 to-red-600/20'
     },
     {
-      title: 'Weather Dashboard',
-      description: 'A responsive weather dashboard that displays current weather conditions, forecasts, and interactive maps using weather APIs.',
-      image: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop',
-      technologies: ['TypeScript', 'React', 'Chart.js', 'OpenWeather API'],
-      github: 'https://github.com/yourusername/weather-dashboard',
-      live: 'https://weather-dashboard-demo.vercel.app',
-      category: 'Frontend',
-      gradient: 'from-gray-800 to-black'
+      title: 'SharePoint Enterprise Solution',
+      description: 'Custom SharePoint solution with PowerApp integration for enterprise workflow automation. Features document management, approval workflows, and Microsoft 365 integration.',
+      image: '/api/placeholder/600/400',
+      category: 'Enterprise',
+      tags: ['SharePoint', 'PowerApp', 'Microsoft 365', 'Workflow', 'Integration'],
+      demoUrl: '#',
+      githubUrl: '#',
+      icon: Database,
+      gradient: 'from-indigo-600/20 to-purple-600/20'
     },
     {
-      title: 'Blog CMS',
-      description: 'A content management system for blogs with markdown support, SEO optimization, and analytics dashboard.',
-      image: 'https://images.unsplash.com/photo-1486312338219-ce68e2c6b4d3?w=500&h=300&fit=crop',
-      technologies: ['Next.js', 'MongoDB', 'TailwindCSS', 'Vercel'],
-      github: 'https://github.com/yourusername/blog-cms',
-      live: 'https://blog-cms-demo.vercel.app',
-      category: 'Full Stack',
-      gradient: 'from-gray-700 to-gray-900'
+      title: 'Real-time Trading Platform',
+      description: 'High-performance trading platform with real-time data streaming using WebSockets and Kafka. Built with Go backend for ultra-low latency and TypeScript frontend.',
+      image: '/api/placeholder/600/400',
+      category: 'Trading',
+      tags: ['Go', 'Kafka', 'WebSockets', 'TypeScript', 'Real-time'],
+      demoUrl: '#',
+      githubUrl: '#',
+      icon: Code,
+      gradient: 'from-yellow-600/20 to-orange-600/20'
     }
   ];
+
+  const categories = ['All', 'Blockchain', 'Full Stack', 'Backend', 'Infrastructure', 'Enterprise', 'Trading'];
+  const [activeCategory, setActiveCategory] = React.useState('All');
+
+  const filteredProjects = activeCategory === 'All' 
+    ? projects 
+    : projects.filter(project => project.category === activeCategory);
 
   return (
     <section id="projects" className="py-20 bg-gradient-to-b from-transparent via-gray-900/30 to-transparent relative">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
           backgroundImage: `linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%), 
                            linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%), 
@@ -58,7 +92,7 @@ const Projects = () => {
           backgroundPosition: '0 0, 0 30px, 30px -30px, -30px 0px'
         }}></div>
       </div>
-      
+
       <div className="container-max-width section-padding relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -73,130 +107,147 @@ const Projects = () => {
             </span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
-            Here are some of my recent projects that showcase my skills and experience
+            Showcase of projects demonstrating expertise in blockchain development, enterprise solutions, and modern web technologies
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+        {/* Category Filter */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center gap-4 mb-16"
+        >
+          {categories.map((category) => (
+            <motion.button
+              key={category}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setActiveCategory(category)}
+              className={`px-6 py-3 rounded-full border transition-all duration-300 ${
+                activeCategory === category
+                  ? 'bg-gray-700 border-gray-500 text-white'
+                  : 'bg-gray-800/50 border-gray-700/50 text-gray-400 hover:border-gray-600 hover:text-gray-300'
+              }`}
+            >
+              {category}
+            </motion.button>
+          ))}
+        </motion.div>
+
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02, y: -5 }}
-              className={`bg-gradient-to-br ${project.gradient} rounded-2xl overflow-hidden border border-gray-600/30 hover:border-gray-500/50 transition-all duration-300 group shadow-xl hover:shadow-2xl backdrop-blur-sm`}
+              whileHover={{ scale: 1.02, y: -10 }}
+              className="group relative bg-gradient-to-br from-gray-800/60 to-gray-900/80 rounded-2xl overflow-hidden border border-gray-700/30 backdrop-blur-sm hover:border-gray-600/50 transition-all duration-500"
             >
               {/* Project Image */}
-              <div className="relative overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent" />
-                <div className="absolute top-4 right-4">
-                  <span className="px-4 py-2 bg-black/60 backdrop-blur-sm text-white text-sm rounded-full border border-gray-600/50">
+              <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-700 to-gray-800">
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-70`}></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <project.icon size={64} className="text-white/50 group-hover:text-white/70 transition-colors duration-300" />
+                </div>
+                
+                {/* Overlay on hover */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  className="absolute inset-0 bg-black/60 flex items-center justify-center space-x-4"
+                >
+                  <motion.a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="p-3 bg-gray-700/80 backdrop-blur-sm rounded-full text-white hover:bg-gray-600 transition-colors duration-300"
+                  >
+                    <ExternalLink size={20} />
+                  </motion.a>
+                  <motion.a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="p-3 bg-gray-700/80 backdrop-blur-sm rounded-full text-white hover:bg-gray-600 transition-colors duration-300"
+                  >
+                    <Github size={20} />
+                  </motion.a>
+                </motion.div>
+
+                {/* Category Badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 bg-black/50 backdrop-blur-sm text-white text-xs rounded-full border border-gray-600/50">
                     {project.category}
                   </span>
-                </div>
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="flex space-x-4">
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="p-3 bg-gray-800/80 hover:bg-gray-700/80 text-white rounded-full transition-colors duration-200 border border-gray-600/50"
-                    >
-                      <Github size={20} />
-                    </motion.a>
-                    <motion.a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="p-3 bg-accent-600/80 hover:bg-accent-500/80 text-white rounded-full transition-colors duration-200 border border-accent-500/50"
-                    >
-                      <ExternalLink size={20} />
-                    </motion.a>
-                  </div>
                 </div>
               </div>
 
               {/* Project Content */}
               <div className="p-8">
-                <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-gray-100 transition-colors duration-300">
+                <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-gray-100 transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="text-gray-300 mb-6 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                <p className="text-gray-400 mb-6 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   {project.description}
                 </p>
-
+                
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {project.technologies.map((tech) => (
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
                     <span
-                      key={tech}
-                      className="px-3 py-1 bg-gray-800/50 hover:bg-gray-700/50 text-gray-300 text-sm rounded-full border border-gray-700/50 transition-colors duration-200"
+                      key={tag}
+                      className="px-3 py-1 bg-gray-700/50 backdrop-blur-sm text-gray-300 text-xs rounded-full border border-gray-600/30 group-hover:border-gray-500/50 group-hover:text-gray-200 transition-all duration-300"
                     >
-                      {tech}
+                      {tag}
                     </span>
                   ))}
                 </div>
-
-                {/* Project Links */}
-                <div className="flex space-x-4">
-                  <motion.a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center space-x-2 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors duration-200 border border-gray-600/50"
-                  >
-                    <Github size={16} />
-                    <span>Code</span>
-                  </motion.a>
-                  <motion.a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center space-x-2 px-6 py-3 bg-accent-600 hover:bg-accent-500 text-white rounded-lg transition-colors duration-200 border border-accent-500/50"
-                  >
-                    <ExternalLink size={16} />
-                    <span>Live Demo</span>
-                  </motion.a>
-                </div>
               </div>
+
+              {/* Shine effect */}
+              <motion.div
+                initial={{ x: '-100%', opacity: 0 }}
+                whileHover={{ x: '100%', opacity: 1 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 pointer-events-none"
+              />
             </motion.div>
           ))}
         </div>
 
-        {/* View More Projects Button */}
+        {/* Call to Action */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-20"
         >
+          <h3 className="text-2xl md:text-3xl font-semibold text-white mb-6">
+            Interested in Working Together?
+          </h3>
+          <p className="text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+            I'm always open to discussing new opportunities and challenging projects. 
+            Whether it's blockchain development, enterprise solutions, or full-stack applications, 
+            let's build something amazing together.
+          </p>
           <motion.a
-            href="https://github.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contact"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center space-x-3 px-8 py-4 border-2 border-gray-600 rounded-full text-gray-300 font-semibold hover:bg-gray-800 hover:text-white transition-all duration-300 backdrop-blur-sm hover:border-gray-500"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-800 rounded-full text-white font-semibold hover:from-gray-600 hover:to-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl border border-gray-600/50 backdrop-blur-sm"
           >
-            <Code size={20} />
-            <span>View More Projects</span>
+            Let's Talk
+            <ExternalLink className="ml-2" size={20} />
           </motion.a>
         </motion.div>
       </div>
