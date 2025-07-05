@@ -4,7 +4,7 @@ A modern, responsive developer portfolio website showcasing expertise in Full St
 
 ## 🚀 Live Demo
 
-Visit the live portfolio: [Portfolio Website](http://localhost:3000)
+Visit the live portfolio: [Portfolio Website](https://vule.dev)
 
 ## 📋 Table of Contents
 
