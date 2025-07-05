@@ -10,7 +10,9 @@ import {
   Send,
   Clock,
   Coffee,
+  Download,
 } from "lucide-react";
+import { generateResumePDF } from "../utils/pdfGenerator";
 
 /**
  * Contact Section Component
@@ -53,6 +55,17 @@ const Contact = () => {
     // Handle form submission logic here
     console.log("Form submitted:", formData);
     // Add actual form submission implementation
+  };
+
+  /**
+   * Handle PDF resume download
+   */
+  const handleDownloadResume = async () => {
+    try {
+      await generateResumePDF();
+    } catch (error) {
+      console.error("Error downloading resume:", error);
+    }
   };
 
   // Contact information configuration
@@ -293,6 +306,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
+            className="no-print"
           >
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Main contact form */}
@@ -459,18 +473,17 @@ const Contact = () => {
                 Start a Conversation
               </motion.a>
 
-              {/* Secondary action - View resume */}
-              <motion.a
-                href="/resume.pdf"
-                download
+              {/* Secondary action - Download resume */}
+              <motion.button
+                onClick={handleDownloadResume}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center px-8 py-4 border-2 border-gray-600 rounded-full text-gray-300 font-semibold hover:bg-gray-800 hover:text-white transition-all duration-300 backdrop-blur-sm hover:border-gray-500"
-                aria-label="Download resume PDF"
+                aria-label="Download resume as PDF"
               >
-                <Coffee className="mr-2" size={20} />
-                View My Resume
-              </motion.a>
+                <Download className="mr-2" size={20} />
+                Download Resume
+              </motion.button>
             </div>
           </div>
         </motion.div>
