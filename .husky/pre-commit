@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🚀 Pre-commit: Generating CV PDF from production..."
+
+# Set environment variable to force production mode
+export FORCE_PRODUCTION=true
+
+# Generate CV from production
+npm run generate-cv-prod
+
+# Check if PDF was generated successfully
+if [ -f "public/Vu_Le_Resume.pdf" ]; then
+    echo "✅ CV PDF generated successfully"
+    # Add the generated PDF to the commit
+    git add public/Vu_Le_Resume.pdf
+    echo "📁 Added updated CV PDF to commit"
+else
+    echo "❌ Failed to generate CV PDF"
+    echo "⚠️  Continuing with commit anyway..."
+fi
+
+echo "🎉 Pre-commit checks completed" 

@@ -12,7 +12,7 @@ import {
   Coffee,
   Download,
 } from "lucide-react";
-import { generateResumePDF } from "../utils/pdfGenerator";
+// import { generateResumePDF } from "../utils/pdfGenerator"; // Temporarily removed
 
 /**
  * Contact Section Component
@@ -59,13 +59,84 @@ const Contact = () => {
 
   /**
    * Handle PDF resume download
+   * Downloads pre-generated static PDF
    */
   const handleDownloadResume = async () => {
     try {
-      await generateResumePDF();
+      // Download pre-generated PDF
+      const staticPdfUrl = "/Vu_Le_Resume.pdf";
+
+      const link = document.createElement("a");
+      link.href = staticPdfUrl;
+      link.download = "Vu_Le_Resume.pdf";
+      link.click();
+
+      // Show success notification
+      showSuccessToast("Resume downloaded successfully!");
     } catch (error) {
       console.error("Error downloading resume:", error);
+      showErrorToast("Failed to download resume. Please try again.");
     }
+  };
+
+  /**
+   * Show success toast (simple version for static download)
+   */
+  const showSuccessToast = (message: string) => {
+    const toast = document.createElement("div");
+    toast.innerHTML = `
+      <div style="
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 100, 0, 0.9);
+        color: white;
+        padding: 16px 24px;
+        border-radius: 8px;
+        border: 1px solid #060;
+        z-index: 10000;
+        backdrop-filter: blur(10px);
+      ">
+        ✅ ${message}
+      </div>
+    `;
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+      if (toast.parentNode) {
+        toast.parentNode.removeChild(toast);
+      }
+    }, 3000);
+  };
+
+  /**
+   * Show error toast (simple version)
+   */
+  const showErrorToast = (message: string) => {
+    const toast = document.createElement("div");
+    toast.innerHTML = `
+      <div style="
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(100, 0, 0, 0.9);
+        color: white;
+        padding: 16px 24px;
+        border-radius: 8px;
+        border: 1px solid #600;
+        z-index: 10000;
+        backdrop-filter: blur(10px);
+      ">
+        ❌ ${message}
+      </div>
+    `;
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+      if (toast.parentNode) {
+        toast.parentNode.removeChild(toast);
+      }
+    }, 5000);
   };
 
   // Contact information configuration
