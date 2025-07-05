@@ -10,6 +10,8 @@
     "fix-mime": "node scripts/fix-mime-types.js",
     "generate-seo": "node scripts/generate-sitemap.js",
     "seo": "npm run generate-seo",
+    "png-to-svg": "node scripts/png-to-svg.js",
+    "convert-images": "npm run png-to-svg",
     "lint": "eslint .",
     "preview": "vite preview"
   },

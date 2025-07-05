@@ -66,7 +66,7 @@ Visit the live portfolio: [Portfolio Website](https://vule.dev)
 portfolio/
 ├── public/                 # Static assets
 │   ├── images/            # Profile images and assets
-│   └── vite.svg          # Vite logo
+│   └── icon.svg          # Vite logo
 ├── src/                   # Source code
 │   ├── components/        # React components
 │   │   ├── Hero.tsx      # Hero section component
