@@ -1,37 +1,38 @@
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Download, ArrowDown } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, Download, ArrowDown } from "lucide-react";
+import AnimatedBadge from "./shared/AnimatedBadge";
 
 const Hero = () => {
   const socialLinks = [
     {
-      name: 'GitHub',
+      name: "GitHub",
       icon: Github,
-      href: 'https://github.com/vulh1209',
-      color: 'hover:text-gray-400',
+      href: "https://github.com/vulh1209",
+      color: "hover:text-gray-400",
     },
     {
-      name: 'LinkedIn',
+      name: "LinkedIn",
       icon: Linkedin,
-      href: 'https://linkedin.com/in/vule',
-      color: 'hover:text-blue-500',
+      href: "https://linkedin.com/in/vule",
+      color: "hover:text-blue-500",
     },
     {
-      name: 'Email',
+      name: "Email",
       icon: Mail,
-      href: 'mailto:lehoangvu1209@gmail.com',
-      color: 'hover:text-green-500',
+      href: "mailto:lehoangvu1209@gmail.com",
+      color: "hover:text-green-500",
     },
   ];
 
   const techStack = [
-    'React',
-    'TypeScript',
-    'Next.js',
-    'Node.js',
-    'Solidity',
-    'AWS',
-    'Docker',
-    'Kubernetes',
+    "React",
+    "TypeScript",
+    "Next.js",
+    "Node.js",
+    "Solidity",
+    "AWS",
+    "Docker",
+    "Kubernetes",
   ];
 
   return (
@@ -95,8 +96,8 @@ const Hero = () => {
             className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed"
           >
             Passionate about building scalable web applications and secure smart
-            contracts. Specializing in React, TypeScript, Solidity, and
-            modern web technologies.
+            contracts. Specializing in React, TypeScript, Solidity, and modern
+            web technologies.
           </motion.p>
 
           {/* Tech Stack */}
@@ -107,15 +108,14 @@ const Hero = () => {
             className="flex flex-wrap justify-center gap-3 mb-8"
           >
             {techStack.map((tech, index) => (
-              <motion.span
+              <motion.div
                 key={tech}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.7 + index * 0.1, duration: 0.3 }}
-                className="px-4 py-2 bg-secondary text-secondary-foreground rounded-full text-sm font-medium"
               >
-                {tech}
-              </motion.span>
+                <AnimatedBadge variant="tech">{tech}</AnimatedBadge>
+              </motion.div>
             ))}
           </motion.div>
 
@@ -127,21 +127,17 @@ const Hero = () => {
             className="flex justify-center space-x-6 mb-8"
           >
             {socialLinks.map((link, index) => (
-              <motion.a
+              <motion.div
                 key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.9 + index * 0.1, duration: 0.3 }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className={`p-3 rounded-full bg-secondary hover:bg-secondary/80 transition-colors ${link.color}`}
               >
-                <link.icon className="w-6 h-6" />
-                <span className="sr-only">{link.name}</span>
-              </motion.a>
+                <AnimatedBadge variant="social" href={link.href}>
+                  <link.icon className="w-6 h-6" />
+                  <span className="sr-only">{link.name}</span>
+                </AnimatedBadge>
+              </motion.div>
             ))}
           </motion.div>
 
@@ -152,24 +148,22 @@ const Hero = () => {
             transition={{ delay: 1, duration: 0.5 }}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
           >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="btn-primary"
+            <AnimatedBadge
+              variant="button"
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
             >
               Get In Touch
-            </motion.button>
-            <motion.a
-              href="/resume.pdf"
-              download
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-secondary inline-flex items-center gap-2"
-            >
-              <Download className="w-4 h-4" />
-              Download CV
-            </motion.a>
+            </AnimatedBadge>
+            <AnimatedBadge variant="button" href="/resume.pdf">
+              <span className="flex items-center gap-2">
+                <Download className="w-4 h-4" />
+                Download CV
+              </span>
+            </AnimatedBadge>
           </motion.div>
 
           {/* Scroll Indicator */}
@@ -179,7 +173,9 @@ const Hero = () => {
             transition={{ delay: 1.2, duration: 0.5 }}
             className="flex flex-col items-center"
           >
-            <p className="text-sm text-muted-foreground mb-2">Scroll to explore</p>
+            <p className="text-sm text-muted-foreground mb-2">
+              Scroll to explore
+            </p>
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}

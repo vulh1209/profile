@@ -54,6 +54,7 @@
   }
 
   body {
+    cursor: none;
     @apply bg-background text-foreground font-geist;
   }
 
