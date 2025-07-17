@@ -8,9 +8,27 @@ dotenv.config({
   path: ".env.local",
 });
 
+// Custom plugin to handle MIME types
+const mimePlugin = () => ({
+  name: "mime-fix",
+  configureServer(server) {
+    server.middlewares.use((req, res, next) => {
+      if (
+        req.url?.endsWith(".tsx") ||
+        req.url?.endsWith(".ts") ||
+        req.url?.endsWith(".jsx") ||
+        req.url?.endsWith(".js")
+      ) {
+        res.setHeader("Content-Type", "text/javascript; charset=utf-8");
+      }
+      next();
+    });
+  },
+});
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), mimePlugin()],
   resolve: {
     alias: {
       "@": resolve(__dirname, "./src"),
@@ -21,9 +39,6 @@ export default defineConfig({
   server: {
     port: 3000,
     host: true,
-    headers: {
-      "Content-Type": "application/javascript; charset=utf-8",
-    },
   },
 
   // Preview configuration for production
