@@ -34,7 +34,7 @@ const CustomCursor: React.FC = () => {
         setHovered(true);
       }
     };
-    const removeHover = (e: Event) => {
+    const removeHover = () => {
       setHovered(false);
     };
     document.addEventListener("mouseover", addHover);
