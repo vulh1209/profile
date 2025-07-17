@@ -16,14 +16,24 @@ export default defineConfig({
       "@": resolve(__dirname, "./src"),
     },
   },
+
+  // Server configuration
   server: {
     port: 3000,
     host: true,
     headers: {
-      "Content-Type": "application/javascript",
+      "Content-Type": "application/javascript; charset=utf-8",
     },
-    middlewareMode: false,
   },
+
+  // Preview configuration for production
+  preview: {
+    port: 3000,
+    host: true,
+  },
+
+  // Asset handling
+  assetsInclude: ["**/*.svg", "**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.gif"],
   build: {
     outDir: "dist",
     sourcemap: false,
